@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 import Image from "next/image";
+import Hint from "../hint/Tooltip";
 
 type ListItemProps = {
   id: string;
@@ -20,20 +21,26 @@ const ListItem: React.FC<ListItemProps> = ({ id, name, imageUrl }) => {
   };
   return (
     <li className="flex">
-      <button className="cursor-pointer" onClick={handleClick}>
-        <Image
-          src={imageUrl}
-          alt={name}
-          width={40}
-          height={40}
-          className={cn(
-            "rounded-md w-full opacity-75 hover:opacity-100 transition",
-            {
-              "opacity-100": isActive,
-            }
-          )}
-        />
-      </button>
+      <Hint label={name} side="right" align="center" sideOffset={12}>
+        <button
+          aria-label={name}
+          className="cursor-pointer"
+          onClick={handleClick}
+        >
+          <Image
+            src={imageUrl}
+            alt={name}
+            width={40}
+            height={40}
+            className={cn(
+              "rounded-md w-full opacity-75 hover:opacity-100 transition",
+              {
+                "opacity-100": isActive,
+              }
+            )}
+          />
+        </button>
+      </Hint>
     </li>
   );
 };
