@@ -24,7 +24,7 @@ const ListItem: React.FC<ListItemProps> = ({ id, name, imageUrl }) => {
       <Hint label={name} side="right" align="center" sideOffset={12}>
         <button
           aria-label={name}
-          className="cursor-pointer"
+          className="cursor-pointer aspect-square w-full"
           onClick={handleClick}
         >
           <Image

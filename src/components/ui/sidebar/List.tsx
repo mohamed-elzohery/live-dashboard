@@ -9,7 +9,7 @@ const List = () => {
   });
   if (userMemberships.data?.length === 0) return null;
   return (
-    <ul className="flex flex-col items-center justify-center gap-4">
+    <ul className="flex flex-col  justify-center gap-4">
       {userMemberships.data?.map(({ organization: { id, name, imageUrl } }) => (
         <ListItem key={id} name={name} imageUrl={imageUrl} id={id} />
       ))}

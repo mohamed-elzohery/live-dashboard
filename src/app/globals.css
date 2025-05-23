@@ -3,11 +3,9 @@
 
 html,body{
   height: 100%;
-  font-size: 1.6rem;
 }
 
 :root{
-  font-size: 62.5%; /* 1rem = 10px */
 }
 
 @custom-variant dark (&:is(.dark *));

@@ -11,12 +11,12 @@ const NewButton = () => {
         <Hint
           label="Create new organization"
           side="right"
-          align="start"
+          align="center"
           sideOffset={12}
         >
           <button
             aria-label="Create a new organization"
-            className="aspect-square bg-white/25 opacity-75 hover:opacity-100 transition-all cursor-pointer w-full rounded-md flex justify-center items-center"
+            className="aspect-square bg-white/25 opacity-75 hover:opacity-100 transition-all cursor-pointer rounded-md flex justify-center items-center"
           >
             <Plus size={20} className="text-white" />
           </button>
