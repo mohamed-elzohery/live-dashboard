@@ -2,8 +2,11 @@
 import React from "react";
 import EmptyResultsLayout from "./EmptyResultsLayout";
 import { CreateOrganization, useOrganization } from "@clerk/nextjs";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Dialog, DialogContent, DialogTrigger } from "../dialog";
+import { useApiMutation } from "@/hooks/useApiMutation";
+import { api } from "../../../../convex/_generated/api";
+import { toast } from "sonner";
 
 const EmptyResults = () => {
   const searchParams = useSearchParams();
@@ -70,13 +73,34 @@ const EmptySearch = () => {
 };
 
 const EmptyBoards = () => {
+  const { mutate: create, isLoading } = useApiMutation(api.board.create);
+  const { organization } = useOrganization();
+  const router = useRouter();
+  const handleClick = () => {
+    if (!organization) return;
+
+    create({
+      title: "Untitled",
+      orgId: organization.id,
+    })
+      .then((id) => {
+        toast.success("Board created");
+        router.push(`/board/${id}`);
+      })
+      .catch(() => {
+        toast.error("Failed to create board");
+      });
+  };
   return (
     <EmptyResultsLayout>
       <EmptyResultsLayout.EmptyResultsImage src="note.svg" />
       <EmptyResultsLayout.EmptyResultsHeader>
         You don&apos;t have any boards yet.
       </EmptyResultsLayout.EmptyResultsHeader>
-      <EmptyResultsLayout.CTAEmptyResults onClick={() => {}}>
+      <EmptyResultsLayout.CTAEmptyResults
+        onClick={handleClick}
+        disabled={isLoading}
+      >
         Create a board
       </EmptyResultsLayout.CTAEmptyResults>
     </EmptyResultsLayout>

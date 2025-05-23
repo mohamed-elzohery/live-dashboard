@@ -5,7 +5,7 @@ import { Button } from "../button";
 interface EmptyResultsLayoutComponent extends React.FC<PropsWithChildren> {
   EmptyResultsImage: React.FC<{ src: string } & PropsWithChildren>;
   EmptyResultsHeader: React.FC<PropsWithChildren>;
-  CTAEmptyResults: React.FC<{ onClick?: () => void } & PropsWithChildren>;
+  CTAEmptyResults: React.FC<PropsWithChildren & React.ComponentProps<"button">>;
 }
 
 const EmptyResultsLayout: EmptyResultsLayoutComponent = ({ children }) => {
@@ -16,21 +16,24 @@ const EmptyResultsLayout: EmptyResultsLayoutComponent = ({ children }) => {
   );
 };
 
-const EmptyResultsImage: React.FC<{ src: string } & PropsWithChildren> = ({
+const EmptyResultsImage: typeof EmptyResultsLayout.EmptyResultsImage = ({
   src,
 }) => {
   return <Image width={140} height={140} src={src} alt="No results" />;
 };
 
-const EmptyResultsHeader: React.FC<PropsWithChildren> = ({ children }) => {
+const EmptyResultsHeader: typeof EmptyResultsLayout.EmptyResultsHeader = ({
+  children,
+}) => {
   return <h2 className="text-xl font-semibold text-center">{children}</h2>;
 };
 
-const CTAEmptyResults: React.FC<
-  { onClick?: () => void } & PropsWithChildren
-> = ({ children, onClick }) => {
+const CTAEmptyResults: typeof EmptyResultsLayout.CTAEmptyResults = ({
+  children,
+  ...props
+}) => {
   return (
-    <Button onClick={onClick} className="cursor-pointer">
+    <Button {...props} className="cursor-pointer">
       {children}
     </Button>
   );
