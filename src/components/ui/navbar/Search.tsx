@@ -4,8 +4,13 @@ import { Input } from "../input";
 import { SearchIcon } from "lucide-react";
 import { useDebounceValue } from "usehooks-ts";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-const Search = () => {
+type SearchProps = {
+  className?: string;
+};
+
+const Search: React.FC<SearchProps> = ({ className }) => {
   const [debouncedValue, setValue] = useDebounceValue("", 500);
   const { push } = useRouter();
 
@@ -14,11 +19,14 @@ const Search = () => {
   }, [debouncedValue, push]);
 
   return (
-    <div role="search" className="flex flex-1 items-center relative">
+    <div
+      role="search"
+      className={cn("flex flex-1 items-center relative", className)}
+    >
       <Input
         type="text"
         placeholder="Search Boards"
-        className="flex-1 max-w-sm pl-8"
+        className={cn("flex-1 max-w-sm pl-8 text-muted-foreground")}
         aria-label="Search"
         onChange={(e) => setValue(e.target.value)}
       />

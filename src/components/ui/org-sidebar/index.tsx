@@ -21,28 +21,7 @@ const OrgSidebar = ({ className }: OrgSidebarProps) => {
         <Image src="/logo.svg" alt="Live Dashboard" width={60} height={60} />
         <h1 className="font-bold text-3xl text-black">Board</h1>
       </header>
-      <OrganizationSwitcher
-        hidePersonal
-        appearance={{
-          elements: {
-            rootBox: {
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            },
-            organizationSwitcherTrigger: {
-              padding: "6px",
-              width: "100%",
-              borderRadius: "6px",
-              border: "1px solid #E5E7EB",
-              justifyContent: "space-between",
-              backgroundColor: "white",
-              fontSize: "1.6rem",
-            },
-          },
-        }}
-      />
+      <OrgSwitcher />
       <nav className="flex flex-col">
         <Button
           className="flex justify-start items-center gap-4 p-8  text-slate-900"
@@ -74,5 +53,30 @@ const OrgSidebar = ({ className }: OrgSidebarProps) => {
     </aside>
   );
 };
+
+export const OrgSwitcher = () => (
+  <OrganizationSwitcher
+    hidePersonal
+    appearance={{
+      elements: {
+        rootBox: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        },
+        organizationSwitcherTrigger: {
+          padding: "6px",
+          width: "100%",
+          borderRadius: "6px",
+          border: "1px solid #E5E7EB",
+          justifyContent: "space-between",
+          backgroundColor: "white",
+          fontSize: "1.6rem",
+        },
+      },
+    }}
+  />
+);
 
 export default OrgSidebar;
