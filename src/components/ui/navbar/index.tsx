@@ -1,5 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 import React from "react";
+import Search from "./Search";
 
 interface NavBarProps {
   className?: string;
@@ -7,17 +8,9 @@ interface NavBarProps {
 
 const NavBar = ({ className }: NavBarProps) => {
   return (
-    <nav
-      className={`flex justify-between items-center bg-green-500 text-white ${className || ""}`}
-    >
+    <nav className={`flex justify-between items-center p-4 ${className || ""}`}>
+      <Search />
       <UserButton />
-      <form role="search" className="flex items-center">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="p-2 rounded-l-md"
-        />
-      </form>
     </nav>
   );
 };
