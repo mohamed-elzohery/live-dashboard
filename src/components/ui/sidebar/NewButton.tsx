@@ -8,19 +8,19 @@ const NewButton = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Hint
-          label="Create new organization"
-          side="right"
-          align="center"
-          sideOffset={12}
+        <button
+          aria-label="Create a new organization"
+          className="aspect-square bg-white/25 opacity-75 hover:opacity-100 transition-all cursor-pointer rounded-md flex justify-center items-center"
         >
-          <button
-            aria-label="Create a new organization"
-            className="aspect-square bg-white/25 opacity-75 hover:opacity-100 transition-all cursor-pointer rounded-md flex justify-center items-center"
+          <Hint
+            label="Create new organization"
+            side="right"
+            align="center"
+            sideOffset={12}
           >
             <Plus size={20} className="text-white" />
-          </button>
-        </Hint>
+          </Hint>
+        </button>
       </DialogTrigger>
       <DialogContent className="max-w-[40rem] p-0 bg-transparent border-none">
         <CreateOrganization />
