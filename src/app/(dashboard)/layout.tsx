@@ -22,11 +22,11 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     <html lang="en" className={inter.className}>
       <body>
         <ConvexClientProvider>
-          <main className="grid grid-cols-[6rem_0rem_1fr] lg:grid-cols-[6rem_20rem_1fr] grid-rows-[6rem_1fr] h-screen">
+          <main className="grid grid-cols-[6rem_0rem_1fr] lg:grid-cols-[6rem_20rem_1fr] grid-rows-[5rem_1fr] h-screen content-stretch">
             <SidebarComponent className="row-span-2 col-start-1 col-end-2" />
             <OrgSidebar className="row-span-2 col-start-2 col-end-3 " />
             <NavBar className="row-start-1 row-end-2 col-start-3 col-end-4" />
-            <main className="row-start-2 row-end-3 col-start-3 col-end-4 bg-gray-100">
+            <main className="row-start-2 row-end-3 col-start-3 col-end-4 bg-gray-100 ">
               {children}
             </main>
           </main>

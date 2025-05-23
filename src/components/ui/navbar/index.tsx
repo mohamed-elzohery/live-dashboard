@@ -13,7 +13,7 @@ const NavBar = ({ className }: NavBarProps) => {
   const { organization } = useOrganization();
   return (
     <nav
-      className={`flex justify-between items-center p-4 gap-4 ${className || ""}`}
+      className={`flex justify-between items-center p-4 py-0 gap-4 ${className || ""}`}
     >
       <Search className="hidden lg:flex" />
       <div className="w-full max-w-xs flex lg:hidden">
