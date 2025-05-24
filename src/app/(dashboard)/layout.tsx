@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import SidebarComponent from "@/components/ui/sidebar";
 import OrgSidebar from "@/components/ui/org-sidebar";
 import NavBar from "@/components/ui/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
               {children}
             </main>
           </main>
+          <Toaster />
         </ConvexClientProvider>
       </body>
     </html>

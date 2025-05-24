@@ -1,11 +1,10 @@
-import EmptyResults from "@/components/ui/empty-results/EmptyResults";
 import React from "react";
+import Boards from "@/components/boards/BoardsList";
 
 const HomePage = () => {
-  const boards = [];
   return (
     <section className="bg-white p-4 h-full">
-      {boards.length === 0 && <EmptyResults />}
+      <Boards />
     </section>
   );
 };

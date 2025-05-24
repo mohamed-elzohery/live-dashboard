@@ -2,7 +2,7 @@
 import React from "react";
 import EmptyResultsLayout from "./EmptyResultsLayout";
 import { CreateOrganization, useOrganization } from "@clerk/nextjs";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Dialog, DialogContent, DialogTrigger } from "../dialog";
 import { useApiMutation } from "@/hooks/useApiMutation";
 import { api } from "../../../../convex/_generated/api";
@@ -75,7 +75,7 @@ const EmptySearch = () => {
 const EmptyBoards = () => {
   const { mutate: create, isLoading } = useApiMutation(api.board.create);
   const { organization } = useOrganization();
-  const router = useRouter();
+  //   const router = useRouter();
   const handleClick = () => {
     if (!organization) return;
 
@@ -83,9 +83,9 @@ const EmptyBoards = () => {
       title: "Untitled",
       orgId: organization.id,
     })
-      .then((id) => {
+      .then(() => {
         toast.success("Board created");
-        router.push(`/board/${id}`);
+        // router.push(`/board/${id}`);
       })
       .catch(() => {
         toast.error("Failed to create board");
