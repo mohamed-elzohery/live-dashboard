@@ -4,7 +4,8 @@ import { useQuery } from "convex/react";
 import React from "react";
 import { api } from "../../../convex/_generated/api";
 import { useOrganization } from "@clerk/nextjs";
-import BoardCard from "./BoardCard";
+import BoardCard, { BoardListSkeleton } from "./BoardCard";
+import NewBoardCard from "./NewBoardCard";
 
 const Boards = () => {
   const { organization } = useOrganization();
@@ -21,13 +22,14 @@ const Boards = () => {
 
 const BoardsList: React.FC<{ orgId: string }> = ({ orgId }) => {
   const boards = useQuery(api.boards.get, { orgId });
-  console.log("boards", boards);
+  if (boards === undefined) return <BoardListSkeleton />;
   if (!boards || boards.length === 0) return <EmptyResults />;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-4">
+      <NewBoardCard disabled={false} />
       {boards.map((board) => (
-        <BoardCard key={board._id} board={board} />
+        <BoardCard key={board._id} board={{ ...board, isFavorite: false }} />
       ))}
     </div>
   );
